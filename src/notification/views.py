@@ -17,9 +17,9 @@ class ClientViewSet(viewsets.ModelViewSet):
     serializer_class = ClientSerializer
 
 
-# class MessageViewSet(viewsets.ModelViewSet):
-#     queryset = Message.objects.all()
-#     serializer_class = MessageSerializer
+class MessageViewSet(viewsets.ModelViewSet):
+    queryset = Message.objects.all()
+    serializer_class = MessageSerializer
 
 
 class MailingViewSet(viewsets.ModelViewSet):
@@ -37,5 +37,3 @@ class MailingViewSet(viewsets.ModelViewSet):
         mailings = self.get_queryset()
         data = [get_mailing_statistics(mailing) for mailing in mailings]
         return Response(data)
-
-    # @action(detail=False, methods=[''])

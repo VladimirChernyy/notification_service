@@ -1,8 +1,10 @@
 from django.db.models import Count
 
+from .models import Mailing
+
 
 def get_mailing_statistics(mailing):
-    message_status = mailing.objects.values('status').annotate(
+    message_status = mailing.mailing.values('status').annotate(
         count=Count('status'))
     mailing_data = {
         'mailing_id': mailing.id,

@@ -39,7 +39,17 @@ class Mailing(OperatorTagAbstractModel, models.Model):
                 name='validate_start_time',
                 violation_error_message='Время начала рассылки не может быть '
                                         'позднее окончания',
-            )
+            ),
+            # models.CheckConstraint(
+            #     check=~models.Q(tag__isnull=True),
+            #     name='validate_tag',
+            #     violation_error_message='Данного тега не существует'
+            # ),
+            # models.CheckConstraint(
+            #     check=~models.Q(operator_code__isnull=True),
+            #     name='validate_operator_code',
+            #     violation_error_message='Данного кода оператора не существует'
+            # )
         ]
 
     def __str__(self):
@@ -47,7 +57,7 @@ class Mailing(OperatorTagAbstractModel, models.Model):
 
 
 class Client(OperatorTagAbstractModel, models.Model):
-    TIMEZONE = tuple(zip(pytz.all_timezones, pytz.all_timezones))
+    TIMEZONE_CHOICES = [(tz, tz) for tz in pytz.all_timezones]
 
     phone_number = models.CharField(
         'Номер телефона',
@@ -56,7 +66,7 @@ class Client(OperatorTagAbstractModel, models.Model):
     )
     time_zone = models.CharField(
         'Часовой пояс',
-        choices=TIMEZONE,
+        choices=TIMEZONE_CHOICES,
         max_length=255,
     )
 
