@@ -1,17 +1,11 @@
 from rest_framework import serializers
 
-from .models import Mailing, Client, Message
+from .models import Mailing, Client
 
 
 class ClientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Client
-        fields = '__all__'
-
-
-class MessageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Message
         fields = '__all__'
 
 

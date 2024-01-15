@@ -40,16 +40,6 @@ class Mailing(OperatorTagAbstractModel, models.Model):
                 violation_error_message='Время начала рассылки не может быть '
                                         'позднее окончания',
             ),
-            # models.CheckConstraint(
-            #     check=~models.Q(tag__isnull=True),
-            #     name='validate_tag',
-            #     violation_error_message='Данного тега не существует'
-            # ),
-            # models.CheckConstraint(
-            #     check=~models.Q(operator_code__isnull=True),
-            #     name='validate_operator_code',
-            #     violation_error_message='Данного кода оператора не существует'
-            # )
         ]
 
     def __str__(self):

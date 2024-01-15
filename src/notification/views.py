@@ -6,7 +6,6 @@ from rest_framework.response import Response
 from .models import Client, Message, Mailing
 from .serializers import (
     ClientSerializer,
-    MessageSerializer,
     MailingSerializer
 )
 from .utils import get_mailing_statistics
@@ -15,11 +14,6 @@ from .utils import get_mailing_statistics
 class ClientViewSet(viewsets.ModelViewSet):
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
-
-
-class MessageViewSet(viewsets.ModelViewSet):
-    queryset = Message.objects.all()
-    serializer_class = MessageSerializer
 
 
 class MailingViewSet(viewsets.ModelViewSet):
